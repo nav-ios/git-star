@@ -13,6 +13,7 @@ class RemoteGitLoader{
     
     public enum Error: Swift.Error{
         case noConnectivity
+        case invalidData
     }
     
     init(client: HTTPClient) {
@@ -20,18 +21,31 @@ class RemoteGitLoader{
     }
     
     func load(completion: @escaping (Error) -> Void){
-        client.getRepos(){ error in
-            completion(.noConnectivity)
+        client.getRepos(){ data, error in
+            if let error{
+                completion(.noConnectivity)
+            }else{
+                completion(.invalidData)
+            }
         }
     }
 }
 
 class HTTPClient{
     var requestedLoadCallCount = 0
+    var completions = [(Data?, Error?) -> Void]()
     
-    func getRepos(completion: @escaping (Error) -> Void){
+    func getRepos(completion: @escaping (Data?, Error?) -> Void){
         requestedLoadCallCount += 1
-        completion(NSError(domain: "anyError", code: 404))
+        completions.append(completion)
+    }
+    
+    func completeWith(error: NSError, at index: Int = 0){
+        completions[index](nil, error)
+    }
+    
+    func completeWith(data: Data, at index: Int = 0){
+        completions[index](data, nil)
     }
 }
 
@@ -51,11 +65,25 @@ final class GitLoaderTests: XCTestCase {
     
     
     func test_load_failsWithNoConnectivityErrorOnClientFailingWithError(){
-        let (sut, _) = makeSUT()
+        let (sut, client) = makeSUT()
         sut.load(){ error in
             XCTAssertEqual(error, .noConnectivity)
         }
+        client.completeWith(error: anyError())
+        
     }
+    
+    func test_load_failsWithInvalidDataError(){
+        let (sut, client) = makeSUT()
+        sut.load(){ error in
+            XCTAssertEqual(error, .invalidData)
+        }
+        let data = Data.init("Invalid data".utf8)
+        client.completeWith(data: data)
+
+    }
+    
+    
     
     
     
@@ -63,5 +91,9 @@ final class GitLoaderTests: XCTestCase {
         let client = HTTPClient()
         let sut = RemoteGitLoader(client: client)
         return (sut, client)
+    }
+    
+    private func anyError() -> NSError{
+        NSError(domain: "some error domain", code: 41)
     }
 }
