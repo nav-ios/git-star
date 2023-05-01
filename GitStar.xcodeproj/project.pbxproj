@@ -7,10 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		593FCD4A29FFBE050088C6A9 /* GitLoader.docc in Sources */ = {isa = PBXBuildFile; fileRef = 593FCD4929FFBE050088C6A9 /* GitLoader.docc */; };
 		593FCD5029FFBE050088C6A9 /* GitLoader.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 593FCD4629FFBE040088C6A9 /* GitLoader.framework */; };
 		593FCD5529FFBE050088C6A9 /* GitLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 593FCD5429FFBE050088C6A9 /* GitLoaderTests.swift */; };
-		593FCD5629FFBE050088C6A9 /* GitLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = 593FCD4829FFBE050088C6A9 /* GitLoader.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		59C7F9F629FFD73900798854 /* GitRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F4C7B529FFB86300B106B2 /* GitRepo.swift */; };
 		59F4C78429FFB65500B106B2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F4C78329FFB65500B106B2 /* AppDelegate.swift */; };
 		59F4C78629FFB65500B106B2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F4C78529FFB65500B106B2 /* SceneDelegate.swift */; };
 		59F4C78829FFB65500B106B2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F4C78729FFB65500B106B2 /* ViewController.swift */; };
@@ -21,7 +20,6 @@
 		59F4C7A529FFB65700B106B2 /* GitStarUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F4C7A429FFB65700B106B2 /* GitStarUITests.swift */; };
 		59F4C7A729FFB65700B106B2 /* GitStarUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F4C7A629FFB65700B106B2 /* GitStarUITestsLaunchTests.swift */; };
 		59F4C7B429FFB7B400B106B2 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 59F4C7B329FFB7B400B106B2 /* README.md */; };
-		59F4C7B629FFB86300B106B2 /* GitRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F4C7B529FFB86300B106B2 /* GitRepo.swift */; };
 		59F4C7B829FFB8FE00B106B2 /* repositories.json in Resources */ = {isa = PBXBuildFile; fileRef = 59F4C7B729FFB8FE00B106B2 /* repositories.json */; };
 /* End PBXBuildFile section */
 
@@ -51,8 +49,6 @@
 
 /* Begin PBXFileReference section */
 		593FCD4629FFBE040088C6A9 /* GitLoader.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GitLoader.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		593FCD4829FFBE050088C6A9 /* GitLoader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GitLoader.h; sourceTree = "<group>"; };
-		593FCD4929FFBE050088C6A9 /* GitLoader.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = GitLoader.docc; sourceTree = "<group>"; };
 		593FCD4F29FFBE050088C6A9 /* GitLoaderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GitLoaderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		593FCD5429FFBE050088C6A9 /* GitLoaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitLoaderTests.swift; sourceTree = "<group>"; };
 		59F4C78029FFB65500B106B2 /* GitStar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitStar.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -116,8 +112,7 @@
 		593FCD4729FFBE050088C6A9 /* GitLoader */ = {
 			isa = PBXGroup;
 			children = (
-				593FCD4829FFBE050088C6A9 /* GitLoader.h */,
-				593FCD4929FFBE050088C6A9 /* GitLoader.docc */,
+				59F4C7B529FFB86300B106B2 /* GitRepo.swift */,
 			);
 			path = GitLoader;
 			sourceTree = "<group>";
@@ -165,7 +160,6 @@
 				59F4C78C29FFB65700B106B2 /* Assets.xcassets */,
 				59F4C78E29FFB65700B106B2 /* LaunchScreen.storyboard */,
 				59F4C79129FFB65700B106B2 /* Info.plist */,
-				59F4C7B529FFB86300B106B2 /* GitRepo.swift */,
 			);
 			path = GitStar;
 			sourceTree = "<group>";
@@ -195,7 +189,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				593FCD5629FFBE050088C6A9 /* GitLoader.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -390,7 +383,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				593FCD4A29FFBE050088C6A9 /* GitLoader.docc in Sources */,
+				59C7F9F629FFD73900798854 /* GitRepo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -408,7 +401,6 @@
 			files = (
 				59F4C78829FFB65500B106B2 /* ViewController.swift in Sources */,
 				59F4C78429FFB65500B106B2 /* AppDelegate.swift in Sources */,
-				59F4C7B629FFB86300B106B2 /* GitRepo.swift in Sources */,
 				59F4C78629FFB65500B106B2 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -537,6 +529,7 @@
 		593FCD5929FFBE050088C6A9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 4E59WA6F2N;
@@ -554,6 +547,7 @@
 		593FCD5A29FFBE050088C6A9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 4E59WA6F2N;

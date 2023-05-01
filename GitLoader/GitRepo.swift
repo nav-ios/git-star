@@ -6,7 +6,7 @@
 //
 
 import Foundation
-struct GitRepo{
+public struct GitRepo{
     let name: String
     let repoDescription: String
     let repoOwner: String
