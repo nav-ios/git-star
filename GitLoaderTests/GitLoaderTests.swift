@@ -10,17 +10,29 @@ import XCTest
 
 class RemoteGitLoader{
     private let client: HTTPClient
+    
+    public enum Error: Swift.Error{
+        case noConnectivity
+    }
+    
     init(client: HTTPClient) {
         self.client = client
     }
     
-    func load(){
-        client.requestedLoadCallCount = 1
+    func load(completion: @escaping (Error) -> Void){
+        client.getRepos(){ error in
+            completion(.noConnectivity)
+        }
     }
 }
 
 class HTTPClient{
     var requestedLoadCallCount = 0
+    
+    func getRepos(completion: @escaping (Error) -> Void){
+        requestedLoadCallCount += 1
+        completion(NSError(domain: "anyError", code: 404))
+    }
 }
 
 final class GitLoaderTests: XCTestCase {
@@ -33,8 +45,16 @@ final class GitLoaderTests: XCTestCase {
     
     func test_load_callsClientToGetReposFromURL(){
         let (sut, client) = makeSUT()
-        sut.load()
+        sut.load(){_ in}
         XCTAssertEqual(client.requestedLoadCallCount, 1)
+    }
+    
+    
+    func test_load_failsWithNoConnectivityErrorOnClientFailingWithError(){
+        let (sut, _) = makeSUT()
+        sut.load(){ error in
+            XCTAssertEqual(error, .noConnectivity)
+        }
     }
     
     
