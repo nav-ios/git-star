@@ -6,7 +6,7 @@
 //
 
 import Foundation
-public struct GitRepo{
+public struct GitRepo: Decodable{
     let name: String
     let repoDescription: String
     let repoOwner: String
